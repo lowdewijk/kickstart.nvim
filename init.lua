@@ -180,6 +180,7 @@ map('n', '<C-j>', [[<cmd>lua require('tmux').move_down()<cr>]], { desc = '' })
 map('n', '<C-k>', [[<cmd>lua require('tmux').move_up()<cr>]], { desc = '' })
 map('n', '<C-l>', [[<cmd>lua require('tmux').move_right()<cr>]], { desc = '' })
 
+--
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -876,6 +877,26 @@ require('lazy').setup({
   },
   {
     'nathom/tmux.nvim',
+  },
+  {
+    'stevanmilic/nvim-lspimport',
+    config = function()
+      vim.keymap.set('n', '<leader>a', require('lspimport').import, { noremap = true })
+    end,
+  },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+    config = function()
+      vim.keymap.set('n', '<C-e>', '<CMD>Neotree toggle<CR>', { desc = '[E]xplore tree' })
+      vim.keymap.set('n', '<leader>e', '<CMD>Neotree toggle<CR>', { desc = '[E]xplore tree' })
+    end,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

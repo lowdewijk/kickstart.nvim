@@ -180,6 +180,8 @@ map('n', '<C-j>', [[<cmd>lua require('tmux').move_down()<cr>]], { desc = '' })
 map('n', '<C-k>', [[<cmd>lua require('tmux').move_up()<cr>]], { desc = '' })
 map('n', '<C-l>', [[<cmd>lua require('tmux').move_right()<cr>]], { desc = '' })
 
+vim.keymap.set('n', '<leader>%', '<CMD>split<CR>', { desc = '' })
+vim.keymap.set('n', '<leader>"', '<CMD>vsplit<CR>', { desc = '' })
 --
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

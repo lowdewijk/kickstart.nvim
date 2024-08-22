@@ -183,7 +183,13 @@ map('n', '<C-l>', [[<cmd>lua require('tmux').move_right()<cr>]], { desc = '' })
 vim.keymap.set('n', '<leader>%', '<CMD>split<CR>', { desc = '' })
 vim.keymap.set('n', '<leader>"', '<CMD>vsplit<CR>', { desc = '' })
 
-map('n', '<Home>', '<Esc>I', { desc = '' })
+-- Other mappings
+--
+
+-- Save current buffer
+map('n', '<C-s>', ':w<CR>', { noremap = true, silent = true, desc = 'save current buffer' })
+map('i', '<C-s>', '<Esc>:w<CR>i', { noremap = true, silent = true, desc = 'save current buffer' })
+
 --
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -893,6 +899,17 @@ require('lazy').setup({
     config = function(_, opts)
       require('lsp_signature').setup(opts)
     end,
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {
+      settings = {
+        tsserver_format_options = {
+          indentSize = 2,
+        },
+      },
+    },
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
